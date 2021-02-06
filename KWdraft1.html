@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Sample Heading</h1>
+    </body>
+
+<!--DEPENDENCIES:-->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+ <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js"></script>
+
+
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBogUrOkPpYTQqRWYgmPcCttsIuBiBN1zY",
+    authDomain: "kindwords-c394e.firebaseapp.com",
+    databaseURL: "https://kindwords-c394e-default-rtdb.firebaseio.com",
+    projectId: "kindwords-c394e",
+    storageBucket: "kindwords-c394e.appspot.com",
+    messagingSenderId: "343957683016",
+    appId: "1:343957683016:web:c67f812e534d9b8b86117d",
+    measurementId: "G-48H1K6KYQ0"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  // Get a reference to the database service
+  var database = firebase.database();
+
+  var numberOfRequests = 0;
+
+  myStorage = window.localStorage; //yes im using localstorage
+
+  function writeNewPost(str) 
+  {
+  // A post entry.
+  var postData = {req: str,};
+  // Get a key for a new Post.
+  var newPostKey = firebase.database().ref().child('posts').push().key;
+  // Write the new post's data in the posts list 
+  var updates = {};
+  updates['/posts/' + newPostKey] = postData;
+
+  localStorage.setItem('key', newPostKey); //save the key
+  localStorage.setItem('msg', str); //save the message
+  }
+
+  function getPosts()
+  {
+    numberOfRequests = 0; //refresh number of requests variable
+    var leadRef = firebase.database().ref('posts');
+    leadRef.on("value", function(snapshot) 
+    {
+
+        snapshot.forEach(function(childSnapshot) 
+        {
+            var childData = childSnapshot.val();
+            numberOfRequests++;
+            //SUPER IMPORTANT VALUES
+            console.log(JSON.stringify(childData.req));
+            console.log(Object.keys(snapshot.val())[numberOfRequests-1]); 
+            console.log("getPosts called")
+            //DISPLAY CHILD DATA HERE
+        });
+    });
+  }
+
+
+  function writeResponse(key, str) //write new response, given key to original
+  {
+    var newres = firebase.database().ref('posts/' + key).push();
+    newres.set(str);
+  }
+
+  function getResponses(key) //WORKS
+  {
+    var leadRef = firebase.database().ref('posts/' + key);
+    leadRef.on("value", function(snapshot) 
+    {
+        var ctr = 0;
+        snapshot.forEach(function(childSnapshot) 
+        {
+            var childData = childSnapshot.val();
+            //SUPER IMPORTANT VALUES
+            var pre = Object.keys(snapshot.val())[ctr]; 
+            if (pre == "req") return;
+            console.log(pre);
+            console.log(childData);
+            console.log("getResponses called")
+            ctr++;
+            //DISPLAY CHILD DATA HERE
+        });
+    });
+  }
+
+
+
+
+
+
+
+</script>
+</html>
