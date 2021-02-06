@@ -41,8 +41,6 @@
   // Get a reference to the database service
   var database = firebase.database();
 
-  var numberOfRequests = 0;
-
   myStorage = window.localStorage; //yes im using localstorage
 
   function writeNewPost(str) 
@@ -61,21 +59,24 @@
 
   function getPosts()
   {
-    numberOfRequests = 0; //refresh number of requests variable
+    var numberOfRequests = 0; //refresh number of requests variable
     var leadRef = firebase.database().ref('posts');
     leadRef.on("value", function(snapshot) 
     {
-
         snapshot.forEach(function(childSnapshot) 
         {
             var childData = childSnapshot.val();
             numberOfRequests++;
             //SUPER IMPORTANT VALUES
-            console.log(JSON.stringify(childData.req));
-            console.log(Object.keys(snapshot.val())[numberOfRequests-1]); 
+            var childReq = JSON.stringify(childData.req);
+            var childKey = Object.keys(snapshot.val())[numberOfRequests-1]; 
             console.log("getPosts called")
             //DISPLAY CHILD DATA HERE
-        });
+            //some getElementById magic that displays all of childReq here:
+
+            //2d array locally that stores key/request combinations i want to be able to match keys with requests
+            // so when a user clicks on a request they copy the key, which is then used as the writeResponse parameter
+          });
     });
   }
 
@@ -97,7 +98,7 @@
             var childData = childSnapshot.val();
             //SUPER IMPORTANT VALUES
             var pre = Object.keys(snapshot.val())[ctr]; 
-            if (pre == "req") return;
+            if (pre == "req") return; //scan all keys, DON'T scan "req"
             console.log(pre);
             console.log(childData);
             console.log("getResponses called")
@@ -108,10 +109,8 @@
   }
 
 
-
-
-
-
-
 </script>
-</html>
+
+
+
+
