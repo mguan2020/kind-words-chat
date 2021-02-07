@@ -43,7 +43,11 @@ function initReq()
     myKey = myStorage.key;
     myReq = myStorage.str;
     //TODO: Disply myReq, with HTML
-    getResponses(myKey);
+    window.setInterval(function(){
+    if (myKey != null && myReq != null)
+    {
+        getResponses(myKey);
+    }},1000);
 }
 
 //Initialize "help others" interface (on page load)
