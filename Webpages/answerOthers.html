@@ -47,7 +47,7 @@
                 initHelp();
 
 
-                alert("inithelp called");
+                //alert("inithelp called");
                 
                 //try setTimeout(500)? and see if that solves it idk does it work? oh ok
                 //I think that function is executed only after this one returns, maybe just use a button to fetch cards for now
@@ -80,11 +80,12 @@
                     
                     var userReq = document.getElementById("req" + (i + 1));
                     var req = getAPost();
-                    alert(req[0]);
-                    alert(req[1]);
-                    userReq.innerHTML = req[1];
-                    keys.push(req[0]);
-                    
+                    //alert(req[0]);
+                    //alert(req[1]);
+                    //maybe returning an array is a bad idea?
+                    console.log(req.key);
+                    userReq.innerHTML = req.value;
+                    keys.push(req.key);
                 }  
             }
         </script>
@@ -144,9 +145,9 @@
                 <p id="req1">the request of other users</p>
 
                             <!--wait, we can pass 'this' to the function and access the parent card by .parentNode-->
-                <form onsubmit="writeResponse(key, request)" method="POST"> <!-- I think that'll work. Could you help me implement that?-->
+                <form onsubmit="writeResponse(keys[0], reply1);return false" method="POST"> <!-- I think that'll work. Could you help me implement that?-->
                     <div>
-                        <textarea name="reply" id="reply1"></textarea><!--yeah. But the onclick mustn't be on the form. It should be in the submit button, You can only click a button, not a form-->
+                        <textarea name="reply1" id="reply1"></textarea><!--yeah. But the onclick mustn't be on the form. It should be in the submit button, You can only click a button, not a form-->
                     </div>
                     <div>
                         <input type="submit" class="submit"  onclick="removeCard(this)"/>

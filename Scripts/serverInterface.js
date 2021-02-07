@@ -102,9 +102,14 @@ function getAPost()
   var randint = Math.floor(Math.random() * reqKeyArr.length);
   var mykey = reqKeyArr[randint];
   var myStr = reqStrArr[randint];
-  console.log(mykey);
+  console.log(mykey); 
   console.log(myStr);
-  return [myKey, myStr];
+  //alert(String(myKey)); //try this function maybe
+  //alert(myStr);
+  var key = mykey;
+  var value = myStr;
+
+  return {key, value};
 }
 
 //Gets a request string given its key (only applies to "i need help" posts)
@@ -133,9 +138,10 @@ function removeReq(key)
 //Generate a response token to a request, given its key
 //Parameters: 
 //key- request key, accessed using getPosts() -> requestKey, 
-//str- response message 
-function writeResponse(key, str) 
+//taele- text box of response message 
+function writeResponse(key, taele) 
 {
+    str = taele.value;
     var newres = firebase.database().ref('posts/' + key).push();
     newres.set(str);
     //TODO: implement this on the page
