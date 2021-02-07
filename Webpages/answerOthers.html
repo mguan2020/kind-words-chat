@@ -40,22 +40,48 @@
         <script src="../Scripts/serverInterface.js"></script>
 
         <script>
-            function makeCard(){
-
-            }
+            
 
             function loadpage(){
                 var cardParent = document.getElementById("requests");
                 initHelp();
-                
+
                 alert("inithelp called");
+                
+                //try setTimeout(500)? and see if that solves it idk does it work? oh ok
+                //I think that function is executed only after this one returns, maybe just use a button to fetch cards for now
+                //no wait, it's not waiting at all
+
+                
+                //make this into a function, and have a button that calls it 
+                // for(var i = 0; i < 3; i++){
+                    
+                //     var userReq = document.getElementById("req" + (i + 1));
+                //     var req = getAPost();
+                //     alert(req);//shows 3 'undefined's
+                //     userReq.innerHTML = req;
+                // }  
+                    
+
+                //while(!done);
+
+                // for(var i = 0; i < 3; i++){
+                    
+                //     var userReq = document.getElementById("req" + (i + 1));
+                //     var req = getAPost();
+                //     alert(req);//shows 3 'undefined's
+                //     userReq.innerHTML = req;
+                // }
+            }
+
+            function dothis(){
                 for(var i = 0; i < 3; i++){
                     
                     var userReq = document.getElementById("req" + (i + 1));
                     var req = getAPost();
-                    alert(req);
+                    alert(req);//shows 3 'undefined's
                     userReq.innerHTML = req;
-                }
+                }  
             }
         </script>
     </head>
@@ -155,13 +181,13 @@
 
             </div>
         </section>
-        <!--
+        
     <div class="container">
-        <button type="button" class="btn btn-success">
-            Click here to play.  guess what, I'm probably going to delete this. not necessary
+        <button type="button" onclick="dothis()"> can
+            Click
         </button>
     </div>
-    -->
+    
         <footer class="container-fluid row justify-content-center fixed-bottom">
             Footer
         </footer>

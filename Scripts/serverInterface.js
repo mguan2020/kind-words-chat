@@ -20,7 +20,6 @@ firebase.analytics();
 // Get a reference to the database service
 var database = firebase.database();
 
-
 myStorage = window.localStorage; //yes im using localstorage because im lazy
 var myKey;
 var myReq;
