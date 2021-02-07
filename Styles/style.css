@@ -1,11 +1,55 @@
 
-title{
-    position: relative;
+body { /*I'll try making an image in photoshop or something. That sounds nice. 
+    It's been a while since I did anything in photoshop tho. Add the color for now. Sounds good.*/
+    /*background-image: url('image');*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #FABC3C; 
+  }
+
+button {
+    background-color: #4CAF50;
+    border:none;
+    color: white;
+    text-align: center;
     display: inline-block;
-    font-size: 20px;
+    font-size: 16px;
 }
 
-button{
+p {
+    font-size: 18px;
+    text-align: center;
+}
+
+.card {
+    background-color:#ffeebb;
+    text-align: center;
+    margin-left: 1%;
+    padding-bottom: 20px;
+    border-radius: 25px;
+}
+
+.card:hover {
+    background-color:#ffe082;
+}
+
+form
+{
+    text-align:center;
+}
+
+textarea {
+    /*color: white;*/
+    background-color:rgb(255, 255, 255); 
+    resize: none;
+    width:80%;
+    height: 200px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.submit {
     background-color: #4CAF50; /* green */
     border:none;
     color: white;
@@ -14,13 +58,46 @@ button{
     font-size: 16px;
 }
 
-p{
-    font-size: 18px;
-    text-align: center;
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
-.card {/* so are you making the forms part of the card class? yes, the divs surrounding the forms */
-    background-color:#00ccff;
-    text-align: center;
-    margin-left: 1%;
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+ .sidenav a:hover {
+     color: #f1f1f1;
+ }
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
 }

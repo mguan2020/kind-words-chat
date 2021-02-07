@@ -1,6 +1,6 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 
-<<html lang = "en">
+<html lang = "en">
     <head>
         <title>Reassure</title>
 
@@ -29,7 +29,7 @@
     
 
     <body>
-        <!-- this isn't needed' A header would look good You're right, but maybe change the formatting' 
+        <!-- this isn't needed' A header would look good You're right, but maybe change the formatting'
     <header class="container-fluid">
         <h1 class="col">Header</h1>
     </header> -->
@@ -49,17 +49,16 @@
     </nav> -->
 
         <p> Click to open the menu.</p><!--how do you reopen it? works reasonably. It's still only at the top tho-->
-    
+
         <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav">&#9776; open</span> <!-- this i think contains the code to reopen it-->
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="requestReplies.html">Ask for Help</a>
-            <a href="#">Help others</a>
+            <a href="#">Ask for Help</a>
+            <a href="index.html">Help others</a>
             <a href="#">Get Replies</a>
         </div>
 
         <section class="container-fluid row justify-content-center">
-           
             <h3>
                 This is the Web Version for the Game Kind Words!
             </h3>
@@ -75,48 +74,17 @@
         <section class="container-fluid row">
             <div class="col card">
                 <h1>
-                    Write your response here!
+                    Write about your worries here
                 </h1>
 
-                <form onsubmit="whateverjavascriptfunctiontocall(replyithink)" method="POST">
+                <form onsubmit="whateverjavascriptfunctiontocall(requestithink)" method="POST">
                     <div>
-                        <textarea name="reply" id="reply1"></textarea>
+                        <textarea name="request" id="request"></textarea>
                     </div>
                     <div>
-                        <input type="submit" class="submit"/>
-                    </div>
-                </form>
-            </div>
-
-            <div class="col card">
-                <h1>
-                    Write your response here!
-                </h1>
-
-                <form>
-                    <div>
-                        <textarea name="reply" id="reply2"></textarea>
-                    </div>
-                    <div>
-                        <input type="submit" class="submit"/>
+                        <input type="submit" class="submit" />
                     </div>
                 </form>
-            </div>
-
-            <div class="col card">
-                <h1>
-                    Write your response here! <!-- this page is for responding.-->
-                </h1>
-
-                <form>
-                    <div>
-                        <textarea name="reply" id="reply3"></textarea>
-                    </div>
-                    <div>
-                        <input type="submit" class="submit"/>
-                    </div>
-                </form>
-
             </div>
         </section>
         <!--
@@ -127,7 +95,6 @@
     </div>
     -->
         <footer class="container-fluid row justify-content-center fixed-bottom">
-            <!--this must be at the bottom of the page. Still haven't figured it out-->
             Footer
         </footer>
 
