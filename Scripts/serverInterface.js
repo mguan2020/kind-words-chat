@@ -1,0 +1,122 @@
+// Server code
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+var firebaseConfig = {
+    apiKey: "AIzaSyBogUrOkPpYTQqRWYgmPcCttsIuBiBN1zY",
+    authDomain: "kindwords-c394e.firebaseapp.com",
+    databaseURL: "https://kindwords-c394e-default-rtdb.firebaseio.com",
+    projectId: "kindwords-c394e",
+    storageBucket: "kindwords-c394e.appspot.com",
+    messagingSenderId: "343957683016",
+    appId: "1:343957683016:web:c67f812e534d9b8b86117d",
+    measurementId: "G-48H1K6KYQ0"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+// Get a reference to the database service
+var database = firebase.database();
+
+
+myStorage = window.localStorage; //yes im using localstorage because im lazy
+var myKey;
+var myReq;
+
+//Clear (delete) current request
+function clearReq() 
+{
+    myKey = null;
+    myReq = null;
+    myStorage.clear();
+    //TODO: clear all responses
+}
+
+//Initialize "need help" interface (on page load)
+//A user's request is stored client-side on his/her computer
+function initReq() 
+{
+    myKey = myStorage.key;
+    myReq = myStorage.str;
+    //TODO: Disply myReq, with HTML
+    getResponses(myKey);
+}
+
+//Initialize "help others" interface (on page load)
+function initHelp() 
+{
+    getPosts();
+}
+
+
+//Generate a "NEED HELP" message, along with a key that points to the message
+//Parameters: 
+//str- "NEED HELP" request message 
+function writeNewPost(str) 
+{
+    //TODO: implement this on the page
+    var postData = {req: str,};
+    // Get a key for a new Post.
+    var newPostKey = firebase.database().ref().child('posts').push().key;
+    
+    // Write the new post's data in the posts list 
+    var updates = {};
+    updates['/posts/' + newPostKey] = postData;
+    firebase.database().ref().update(updates);
+
+    localStorage.setItem('key', newPostKey); //save the key
+    localStorage.setItem('msg', str); //save the message
+}
+
+//Retrieve ALL request posts from the database, DOES NOT retrieve response posts
+function getPosts() 
+{
+    var numberOfRequests = 0; 
+    var leadRef = firebase.database().ref('posts');
+    leadRef.on("value", function(snapshot) 
+    {
+        snapshot.forEach(function(childSnapshot) 
+        {
+            var childData = childSnapshot.val();
+            numberOfRequests++;          
+            var requestStr = childData.req;                                   // HOLDS "need help" messages
+            var requestKey = Object.keys(snapshot.val())[numberOfRequests-1]; // HOLDS key to the above "need help message"
+            console.log(requestKey);
+            console.log(requestStr);
+        });
+    });
+}
+
+//Generate a response token to a request, given its key
+//Parameters: 
+//key- request key, accessed using getPosts() -> requestKey, 
+//str- response message 
+function writeResponse(key, str) 
+{
+    var newres = firebase.database().ref('posts/' + key).push();
+    newres.set(str);
+    //TODO: implement this on the page
+}
+
+//Retrieves ALL response posts, given the key to the request post
+//Parameters: 
+//key- request key, accessed using getPosts() -> requestKey, 
+function getResponses(key) 
+{
+    var leadRef = firebase.database().ref('posts/' + key);
+    leadRef.on("value", function(snapshot) 
+    {
+        var ctr = 0;
+        snapshot.forEach(function(childSnapshot) 
+        {
+            var responseStr = childSnapshot.val();        //Retrieves responses
+            var responseKey = Object.keys(snapshot.val())[ctr]; //Retrieves the key to that^ response
+            if (responseKey == "req") return;
+            console.log(responseStr);
+            //TODO: display each response using HTML on the page
+            ctr++;
+        });
+    });
+}
