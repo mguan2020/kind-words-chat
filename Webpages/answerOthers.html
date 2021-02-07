@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+    <head>
+        <title>Reassure</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Bootstrap -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <!--DEPENDENCIES:-->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+
+        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-analytics.js"></script>
+
+        <!-- Add Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js"></script>
+        
+        <link rel="stylesheet" href="../Styles/style.css">
+        <script src="../Scripts/script.js"></script>
+        <script src="../Scripts/serverInterface.js"></script>
+
+        <script>
+            function makeCard(){
+
+            }
+
+            function loadpage(){
+                var cardParent = document.getElementById("requests");
+                initHelp();
+                
+                alert("inithelp called");
+                for(var i = 0; i < 3; i++){
+                    
+                    var userReq = document.getElementById("req" + (i + 1));
+                    var req = getAPost();
+                    alert(req);
+                    userReq.innerHTML = req;
+                }
+            }
+        </script>
+    </head>
+
+    
+
+    <body onload="loadpage()">
+        <!-- this isn't needed' A header would look good You're right, but maybe change the formatting' 
+    <header class="container-fluid">
+        <h1 class="col">Header</h1>
+    </header> -->
+        <!--
+    <nav class="navbar navbar-expand-sm bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">link 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">link 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">link 3</a>
+            </li>
+        </ul>     /* let's not show this for now.*/
+    </nav> -->
+
+        <p> Click to open the menu.</p><!--how do you reopen it? works reasonably. It's still only at the top tho-->
+    
+        <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav">&#9776; open</span> <!-- this i think contains the code to reopen it-->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">Ask for Help</a>
+            <a href="#">Help others</a>
+            <a href="#">Get Replies</a>
+        </div>
+
+        <section class="container-fluid row justify-content-center">
+           
+            <h3>
+                This is the Web Version for the Game Kind Words!
+            </h3>
+        </section>
+        <section class="container-fluid row justify-content-center">
+            <p>
+                Our goal is to encourage people to voice their thoughts and feelings during the global
+                pandemic in the form of a short letter. Other people can reply to those letters and generate
+                positive vibes.
+            </p>
+        </section>
+
+        <section class="container-fluid row" id="requests">
+            <div class="col card" id="card1">
+                <h1>
+                    Write your response here!
+                </h1>
+                <p id="req1">the request of other users</p>
+
+                            <!--wait, we can pass 'this' to the function and access the parent card by .parentNode-->
+                <form onsubmit="writeResponse(key, request)" method="POST"> <!-- I think that'll work. Could you help me implement that?-->
+                    <div>
+                        <textarea name="reply" id="reply1"></textarea><!--yeah. But the onclick mustn't be on the form. It should be in the submit button, You can only click a button, not a form-->
+                    </div>
+                    <div>
+                        <input type="submit" class="submit"  onclick="removeCard(this)"/>
+                    </div>
+                </form>
+            </div><!--maybe we should have some sort of a "populateList" function to create these cards in the first place during onload(). It would be easier to integrate Mike's function--> <!-- Great idea.-->
+
+            <div class="col card" id="card2">
+                <h1>
+                    Write your response here!
+                </h1>
+                <p id="req2">the request of other users</p>
+                <form>
+                    <div>
+                        <textarea name="reply" id="reply2"></textarea>
+                    </div>
+                    <div>
+                        <input type="submit" class="submit"/>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col card" id="card3">
+                <h1>
+                    Write your response here! <!-- this page is for responding.-->
+                </h1>
+                <p id="req3">the request of other users</p>
+                <form>
+                    <div>
+                        <textarea name="reply" id="reply3"></textarea>
+                    </div>
+                    <div>
+                        <input type="submit" class="submit"/>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+        <!--
+    <div class="container">
+        <button type="button" class="btn btn-success">
+            Click here to play.  guess what, I'm probably going to delete this. not necessary
+        </button>
+    </div>
+    -->
+        <footer class="container-fluid row justify-content-center fixed-bottom">
+            Footer
+        </footer>
+
+    </body>
+</html>

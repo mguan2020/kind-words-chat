@@ -25,6 +25,9 @@ myStorage = window.localStorage; //yes im using localstorage because im lazy
 var myKey;
 var myReq;
 
+var reqKeyArr = [];
+var reqStrArr = [];
+
 //Clear (delete) current request
 function clearReq() 
 {
@@ -42,6 +45,7 @@ function initReq()
     myReq = myStorage.str;
     //TODO: Disply myReq, with HTML
     getResponses(myKey);
+    return myReq;  //I'll need the message as a returned string -Muhender
 }
 
 //Initialize "help others" interface (on page load)
@@ -80,13 +84,50 @@ function getPosts()
         snapshot.forEach(function(childSnapshot) 
         {
             var childData = childSnapshot.val();
-            numberOfRequests++;          
+            numberOfRequests++;
             var requestStr = childData.req;                                   // HOLDS "need help" messages
             var requestKey = Object.keys(snapshot.val())[numberOfRequests-1]; // HOLDS key to the above "need help message"
             console.log(requestKey);
+            reqKeyArr.push(requestKey); //pushes "need help" key to request Key Array
             console.log(requestStr);
+            reqStrArr.push(requestStr); //pushes "need help" string to request String Array (parallel Array with reqKeyArr)
         });
     });
+}
+
+//Generates a post randomly
+//TODO: display this post in a card with HTML/JS magic
+function getAPost()
+{
+  var randint = Math.floor(Math.random() * reqKeyArr.length);
+  var mykey = reqKeyArr[randint];
+  var myStr = reqStrArr[randint];
+  console.log(mykey);
+  console.log(myStr);
+  return myStr; //I need the string, but it says undefined -Muhender
+}
+
+//Gets a request string given its key (only applies to "i need help" posts)
+function getReq(key)
+{
+  var ref = firebase.database().ref("posts");
+  ref.on("value", function(snapshot) {
+  var childData = snapshot.val();         
+  console.log(childData[key].req);
+  });
+}
+
+//Removes a request given its key
+function removeReq(key)
+{
+  var ref = firebase.database().ref('posts/' + key);
+  ref.remove()
+  .then(function() {
+  console.log("Remove succeeded.")
+  })
+  .catch(function(error) {
+    console.log("Remove failed: " + error.message)
+  });
 }
 
 //Generate a response token to a request, given its key
@@ -99,7 +140,7 @@ function writeResponse(key, str)
     newres.set(str);
     //TODO: implement this on the page
 }
-
+ 
 //Retrieves ALL response posts, given the key to the request post
 //Parameters: 
 //key- request key, accessed using getPosts() -> requestKey, 

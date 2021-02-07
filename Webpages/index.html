@@ -20,46 +20,48 @@
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         
+        <!--DEPENDENCIES:-->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+
+        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-analytics.js"></script>
+
+        <!-- Add Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js"></script>
+
         <link rel="stylesheet" href="../Styles/style.css">
         <script src="../Scripts/script.js"></script>
+        <script src="../Scripts/serverInterface.js"></script>
 
+        <script>
+            function loadindex(){
+                initReq();
+                alert("initreq called");
+            }
+        </script>
 
     </head>
 
     
 
-    <body>
-        <!-- this isn't needed' A header would look good You're right, but maybe change the formatting' 
-    <header class="container-fluid">
-        <h1 class="col">Header</h1>
-    </header> -->
-        <!--
-    <nav class="navbar navbar-expand-sm bg-light">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">link 1</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">link 2</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">link 3</a>
-            </li>
-        </ul>     /* let's not show this for now.*/
-    </nav> -->
+    <body onload="loadindex()">
+        <p> Click to open the menu.</p>
 
-        <p> Click to open the menu.</p><!--how do you reopen it? works reasonably. It's still only at the top tho-->
-    
-        <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav">&#9776; open</span> <!-- this i think contains the code to reopen it-->
+        <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav">&#9776; Menu</span>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="requestReplies.html">Ask for Help</a>
-            <a href="#">Help others</a>
+            <a href="#">Ask for Help</a>
+            <a href="answerOthers.html">Help others</a>
             <a href="#">Get Replies</a>
         </div>
 
         <section class="container-fluid row justify-content-center">
-           
             <h3>
                 This is the Web Version for the Game Kind Words!
             </h3>
@@ -75,60 +77,16 @@
         <section class="container-fluid row">
             <div class="col card">
                 <h1>
-                    Write your response here!
+                    Write about your worries here
                 </h1>
-
-                <form onsubmit="whateverjavascriptfunctiontocall(replyithink)" method="POST">
+                <form onsubmit="writeNewPost(request)" method="POST">
                     <div>
-                        <textarea name="reply" id="reply1"></textarea>
+                        <textarea name="request" id="request"></textarea>
                     </div>
                     <div>
-                        <input type="submit" class="submit"/>
+                        <input type="submit" class="submit" />
                     </div>
                 </form>
-            </div>
-
-            <div class="col card">
-                <h1>
-                    Write your response here!
-                </h1>
-
-                <form>
-                    <div>
-                        <textarea name="reply" id="reply2"></textarea>
-                    </div>
-                    <div>
-                        <input type="submit" class="submit"/>
-                    </div>
-                </form>
-            </div>
-
-            <div class="col card">
-                <h1>
-                    Write your response here! <!-- this page is for responding.-->
-                </h1>
-
-                <form>
-                    <div>
-                        <textarea name="reply" id="reply3"></textarea>
-                    </div>
-                    <div>
-                        <input type="submit" class="submit"/>
-                    </div>
-                </form>
-
             </div>
         </section>
-        <!--
-    <div class="container">
-        <button type="button" class="btn btn-success">
-            Click here to play.  guess what, I'm probably going to delete this. not necessary
-        </button>
-    </div>
-    -->
-        <footer class="container-fluid row justify-content-center fixed-bottom">
-            Footer
-        </footer>
 
-    </body>
-</html>
