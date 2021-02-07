@@ -25,7 +25,7 @@ p {
     background-color:#ffeebb;
     text-align: center;
     margin-left: 1%;
-    margin-bottom: 1%;
+    margin-bottom: 2%;
     padding-bottom: 20px;
     border-radius: 25px;
     transition: 0.4s;
@@ -34,6 +34,24 @@ p {
 }
 
 .card:hover {
+    background-color:#ffe082;
+    transition: 0.4s;
+    box-shadow: 5px 5px 10px rgb(43, 43, 43);
+}
+
+.replies {
+    background-color:#ffeebb;
+    text-align: center;
+    margin-left: 1%;
+    margin-bottom: 2%;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    transition: 0.4s;
+    box-shadow: 2.5px 2.5px 10px rgb(71, 71, 71);
+    width: 100%; 
+}
+
+.replies:hover {
     background-color:#ffe082;
     transition: 0.4s;
     box-shadow: 5px 5px 10px rgb(43, 43, 43);

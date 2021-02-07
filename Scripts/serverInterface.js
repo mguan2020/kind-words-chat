@@ -165,7 +165,7 @@ function getResponses(key)
             console.log(responseStr);
             //TODO: display each response using HTML on the page
             var childDiv = document.createElement("div");
-            childDiv.setAttribute("class", "card");
+            childDiv.setAttribute("class", "replies");
             var text = document.createElement("p");
             text.innerHTML = responseStr;
             childDiv.appendChild(text);
