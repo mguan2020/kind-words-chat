@@ -55,11 +55,11 @@ function initHelp()
 
 //Generate a "NEED HELP" message, along with a key that points to the message
 //Parameters: 
-//str- "NEED HELP" request message 
+//taele- textarea containing "NEED HELP" request message 
 function writeNewPost(taele) 
 {
     var str = taele.value;
-    alert(str);
+    //alert(str);
     //TODO: implement this on the page
     var postData = {req: str,};
     // Get a key for a new Post.

@@ -78,7 +78,7 @@
                 <h1>
                     Write about your worries here
                 </h1>
-                <form onsubmit="writeNewPost(request)" method="POST">
+                <form onsubmit="writeNewPost(request);return false" method="POST">
                     <div>
                         <textarea name="request" id="request"></textarea>
                     </div>
