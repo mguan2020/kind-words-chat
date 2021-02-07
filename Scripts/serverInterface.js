@@ -44,7 +44,6 @@ function initReq()
     myReq = myStorage.str;
     //TODO: Disply myReq, with HTML
     getResponses(myKey);
-    return myReq;
 }
 
 //Initialize "help others" interface (on page load)
@@ -57,8 +56,10 @@ function initHelp()
 //Generate a "NEED HELP" message, along with a key that points to the message
 //Parameters: 
 //str- "NEED HELP" request message 
-function writeNewPost(str) 
+function writeNewPost(taele) 
 {
+    var str = taele.value;
+    alert(str);
     //TODO: implement this on the page
     var postData = {req: str,};
     // Get a key for a new Post.
