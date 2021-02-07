@@ -1,0 +1,26 @@
+
+title{
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+}
+
+button{
+    background-color: #4CAF50; /* green */
+    border:none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+}
+
+p{
+    font-size: 18px;
+    text-align: center;
+}
+
+.card {/* so are you making the forms part of the card class? yes, the divs surrounding the forms */
+    background-color:#00ccff;
+    text-align: center;
+    margin-left: 1%;
+}
