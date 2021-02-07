@@ -40,11 +40,12 @@
         <script src="../Scripts/serverInterface.js"></script>
 
         <script>
-            
+            var keys = [];
 
             function loadpage(){
                 var cardParent = document.getElementById("requests");
                 initHelp();
+
 
                 alert("inithelp called");
                 
@@ -79,8 +80,11 @@
                     
                     var userReq = document.getElementById("req" + (i + 1));
                     var req = getAPost();
-                    alert(req);//shows 3 'undefined's
-                    userReq.innerHTML = req;
+                    alert(req[0]);
+                    alert(req[1]);
+                    userReq.innerHTML = req[1];
+                    keys.push(req[0]);
+                    
                 }  
             }
         </script>
@@ -108,9 +112,9 @@
         </ul>     /* let's not show this for now.*/
     </nav> -->
 
-        <p> Click to open the menu.</p><!--how do you reopen it? works reasonably. It's still only at the top tho-->
+        <!--how do you reopen it? works reasonably. It's still only at the top tho-->
     
-        <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav">&#9776; open</span> <!-- this i think contains the code to reopen it-->
+        <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav" class="container border rounded border-warning menu">&#9776; Menu</span> <!-- this i think contains the code to reopen it-->
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.html">Ask for Help</a>
@@ -183,12 +187,12 @@
         </section>
         
     <div class="container">
-        <button type="button" onclick="dothis()"> can
-            Click
-        </button>
+        <button type="button" onclick="dothis()"> <!--on what? I sent one i see itworks now, but we can't possibly require the user to do this-->
+            Click                                 <!--they suggest some stuff to do with promises, async and await. Apparently js will wait for promises if implemented correctly-->
+        </button>                                   <!--committed, btw-->
     </div>
-    
-        <footer class="container-fluid row justify-content-center fixed-bottom">
+    <!--yeah im reading about it rn we should try that out later but lets make sure first that all the functionality is there It works, I ran it, but only on clicking this button-->
+        <footer class="container-fluid row justify-content-center fixed-bottom"> <!--let's implement all the functions first tho --><!--ok, you mean like yep responding and stuff? ok-->
             Footer
         </footer>
 

@@ -44,7 +44,7 @@ function initReq()
     myReq = myStorage.str;
     //TODO: Disply myReq, with HTML
     getResponses(myKey);
-    return myReq;  //I'll need the message as a returned string -Muhender
+    return myReq;
 }
 
 //Initialize "help others" interface (on page load)
@@ -103,7 +103,7 @@ function getAPost()
   var myStr = reqStrArr[randint];
   console.log(mykey);
   console.log(myStr);
-  return myStr; //I need the string, but it says undefined -Muhender
+  return [myKey, myStr];
 }
 
 //Gets a request string given its key (only applies to "i need help" posts)
