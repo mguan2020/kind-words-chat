@@ -160,9 +160,9 @@
                     Write your response here!
                 </h1>
                 <p id="req2">the request of other users</p>
-                <form>
+                <form onsubmit="writeResponse(keys[1], reply2);return false" method="POST">
                     <div>
-                        <textarea name="reply" id="reply2"></textarea>
+                        <textarea name="reply2" id="reply2"></textarea>
                     </div>
                     <div>
                         <input type="submit" class="submit"/>
@@ -175,9 +175,9 @@
                     Write your response here! <!-- this page is for responding.-->
                 </h1>
                 <p id="req3">the request of other users</p>
-                <form>
+                <form onsubmit="writeResponse(keys[2], reply3);return false" method="POST">
                     <div>
-                        <textarea name="reply" id="reply3"></textarea>
+                        <textarea name="reply3" id="reply3"></textarea>
                     </div>
                     <div>
                         <input type="submit" class="submit"/>

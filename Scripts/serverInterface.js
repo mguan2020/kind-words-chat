@@ -152,6 +152,7 @@ function writeResponse(key, taele)
 //key- request key, accessed using getPosts() -> requestKey, 
 function getResponses(key) 
 {
+    parentDiv = document.getElementById("replies");
     var leadRef = firebase.database().ref('posts/' + key);
     leadRef.on("value", function(snapshot) 
     {
@@ -163,6 +164,12 @@ function getResponses(key)
             if (responseKey == "req") return;
             console.log(responseStr);
             //TODO: display each response using HTML on the page
+            var childDiv = document.createElement("div");
+            childDiv.setAttribute("class", "card");
+            var text = document.createElement("p");
+            text.innerHTML = responseStr;
+            childDiv.appendChild(text);
+            parentDiv.appendChild(childDiv);
             ctr++;
         });
     });
