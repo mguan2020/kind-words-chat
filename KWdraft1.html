@@ -78,13 +78,18 @@
   //str- "NEED HELP" request message 
   function writeNewPost(str) 
   {
+    //TODO: implement this on the page
     var postData = {req: str,};
+    // Get a key for a new Post.
     var newPostKey = firebase.database().ref().child('posts').push().key;
+    
+    // Write the new post's data in the posts list 
+    var updates = {};
+    updates['/posts/' + newPostKey] = postData;
+    firebase.database().ref().update(updates);
 
-    myKey = newPostKey;
-    myReq = str;
-    localStorage.setItem('key', newPostKey); //save the key locally for later access
-    localStorage.setItem('msg', str); //save the message locally
+    localStorage.setItem('key', newPostKey); //save the key
+    localStorage.setItem('msg', str); //save the message
   }
 
   //Retrieve ALL request posts from the database, DOES NOT retrieve response posts
@@ -100,8 +105,8 @@
         numberOfRequests++;          
         var requestStr = childData.req;                                   // HOLDS "need help" messages
         var requestKey = Object.keys(snapshot.val())[numberOfRequests-1]; // HOLDS key to the above "need help message"
+        console.log(requestKey);
         console.log(requestStr);
-        console.log("getPosts called")
         });
     });
   }
@@ -114,6 +119,7 @@
   {
     var newres = firebase.database().ref('posts/' + key).push();
     newres.set(str);
+    //TODO: implement this on the page
   }
 
   //Retrieves ALL response posts, given the key to the request post
@@ -131,7 +137,7 @@
           var responseKey = Object.keys(snapshot.val())[ctr]; //Retrieves the key to that^ response
           if (responseKey == "req") return;
           console.log(responseStr);
-          console.log("getResponses called")
+          //TODO: display each response using HTML on the page
           ctr++;
       });
     });
