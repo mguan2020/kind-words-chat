@@ -74,18 +74,29 @@
                 //     userReq.innerHTML = req;
                 // }
             }
-
-            function dothis(){
-                for(var i = 0; i < 3; i++){
-                    
-                    var userReq = document.getElementById("req" + (i + 1));
+            
+            function replace(i){
+                var userReq = document.getElementById("req" + (i + 1));
                     var req = getAPost();
                     //alert(req[0]);
                     //alert(req[1]);
                     //maybe returning an array is a bad idea?
                     console.log(req.key);
                     userReq.innerHTML = req.value;
-                    keys.push(req.key);
+                    keys[i] = req.key;
+            }
+
+            function dothis(){
+                for(var i = 0; i < 3; i++){
+                    replace(i);
+                    // var userReq = document.getElementById("req" + (i + 1));
+                    // var req = getAPost();
+                    // //alert(req[0]);
+                    // //alert(req[1]);
+                    // //maybe returning an array is a bad idea?
+                    // console.log(req.key);
+                    // userReq.innerHTML = req.value;
+                    // keys.push(req.key);
                 }  
             }
         </script>
@@ -115,7 +126,7 @@
 
         <!--how do you reopen it? works reasonably. It's still only at the top tho-->
     
-        <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav" class="container border rounded border-warning menu">&#9776; Menu</span> <!-- this i think contains the code to reopen it-->
+        <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav" class="container menu">&#9776; Menu</span> <!-- this i think contains the code to reopen it-->
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.html">Ask for Help</a>
@@ -145,9 +156,9 @@
                 <p id="req1">the request of other users</p>
 
                             <!--wait, we can pass 'this' to the function and access the parent card by .parentNode-->
-                <form onsubmit="writeResponse(keys[0], reply1);return false" method="POST"> <!-- I think that'll work. Could you help me implement that?-->
+                <form onsubmit="writeResponse(keys[0], reply1); replace(0); return false" method="POST"> <!-- I think that'll work. Could you help me implement that?-->
                     <div>
-                        <textarea name="reply1" id="reply1"></textarea><!--yeah. But the onclick mustn't be on the form. It should be in the submit button, You can only click a button, not a form-->
+                        <textarea name="reply1" id="reply1"></textarea>
                     </div>
                     <div>
                         <input type="submit" class="submit"  onclick="removeCard(this)"/>
@@ -160,7 +171,7 @@
                     Write your response here!
                 </h1>
                 <p id="req2">the request of other users</p>
-                <form onsubmit="writeResponse(keys[1], reply2);return false" method="POST">
+                <form onsubmit="writeResponse(keys[1], reply2); replace(1); return false" method="POST">
                     <div>
                         <textarea name="reply2" id="reply2"></textarea>
                     </div>
@@ -175,7 +186,7 @@
                     Write your response here! <!-- this page is for responding.-->
                 </h1>
                 <p id="req3">the request of other users</p>
-                <form onsubmit="writeResponse(keys[2], reply3);return false" method="POST">
+                <form onsubmit="writeResponse(keys[2], reply3); replace(2); return false" method="POST">
                     <div>
                         <textarea name="reply3" id="reply3"></textarea>
                     </div>
