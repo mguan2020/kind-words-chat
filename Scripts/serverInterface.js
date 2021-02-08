@@ -117,14 +117,14 @@ function getAPost()
   var randint = Math.floor(Math.random() * reqKeyArr.length);
   var mykey = reqKeyArr[randint];
   var myStr = reqStrArr[randint];
-  console.log(mykey); 
-  console.log(myStr);
+  //console.log(mykey); 
+  //console.log(myStr);
   //alert(String(myKey)); //try this function maybe
   //alert(myStr);
-  var key = mykey;
+  var keey = mykey;
   var value = myStr;
 
-  return {key, value};
+  return {keey, value};
 }
 
 //Gets a request string given its key (only applies to "i need help" posts)

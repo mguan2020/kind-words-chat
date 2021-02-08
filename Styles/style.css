@@ -74,12 +74,18 @@ textarea {
 }
 
 .submit {
-    background-color: #4CAF50; /* green */
+    background-color: #ffc1b6; /* green */
     border:none;
     color: white;
     text-align: center;
     display: inline-block;
     font-size: 16px;
+}
+
+.menu
+{
+    margin-top:3px;
+    margin-left:3px;
 }
 
 .sidenav {

@@ -80,23 +80,33 @@
                     var req = getAPost();
                     //alert(req[0]);
                     //alert(req[1]);
-                    //maybe returning an array is a bad idea?
-                    console.log(req.key);
+                    
+                    console.log(req.keey);
                     userReq.innerHTML = req.value;
-                    keys[i] = req.key;
+                    //var keytemp = keys;
+                    //keys.length = 0;
+                    // for(var j = 0; j < 3; j++){
+                    //     if(j != i){
+                    //         keys.push(keytemp[j]);
+                    //     }
+                    //     else{
+                    //         keys.push(req.key);
+                    //     }
+                    // }
+                    keys[i] = req.keey;
             }
 
             function dothis(){
+                keys.length = 0;
                 for(var i = 0; i < 3; i++){
-                    replace(i);
-                    // var userReq = document.getElementById("req" + (i + 1));
-                    // var req = getAPost();
-                    // //alert(req[0]);
-                    // //alert(req[1]);
-                    // //maybe returning an array is a bad idea?
-                    // console.log(req.key);
-                    // userReq.innerHTML = req.value;
-                    // keys.push(req.key);
+                    var userReq = document.getElementById("req" + (i + 1));
+                    var req = getAPost();
+                    //alert(req[0]);
+                    //alert(req[1]);
+                    //maybe returning an array is a bad idea?
+                    console.log(req.keey);
+                    userReq.innerHTML = req.value;
+                    keys.push(req.keey);
                 }  
             }
         </script>
@@ -105,26 +115,6 @@
     
 
     <body onload="loadpage()">
-        <!-- this isn't needed' A header would look good You're right, but maybe change the formatting' 
-    <header class="container-fluid">
-        <h1 class="col">Header</h1>
-    </header> -->
-        <!--
-    <nav class="navbar navbar-expand-sm bg-light">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">link 1</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">link 2</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">link 3</a>
-            </li>
-        </ul>     /* let's not show this for now.*/
-    </nav> -->
-
-        <!--how do you reopen it? works reasonably. It's still only at the top tho-->
     
         <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav" class="container menu">&#9776; Menu</span> <!-- this i think contains the code to reopen it-->
         <div id="mySidenav" class="sidenav">
@@ -137,7 +127,7 @@
         <section class="container-fluid row justify-content-center">
            
             <h3>
-                This is the Web Version for the Game Kind Words!
+                Help others and help yourself!
             </h3>
         </section>
         <section class="container-fluid row justify-content-center">
@@ -155,16 +145,15 @@
                 </h1>
                 <p id="req1">the request of other users</p>
 
-                            <!--wait, we can pass 'this' to the function and access the parent card by .parentNode-->
-                <form onsubmit="writeResponse(keys[0], reply1); replace(0); return false" method="POST"> <!-- I think that'll work. Could you help me implement that?-->
+                <form onsubmit="writeResponse(keys[0], reply1); replace(0); return false" method="POST">
                     <div>
                         <textarea name="reply1" id="reply1"></textarea>
                     </div>
                     <div>
-                        <input type="submit" class="submit"  onclick="removeCard(this)"/>
+                        <input type="submit" class="submit" value="Send"  onclick="removeCard(this)"/>
                     </div>
                 </form>
-            </div><!--maybe we should have some sort of a "populateList" function to create these cards in the first place during onload(). It would be easier to integrate Mike's function--> <!-- Great idea.-->
+            </div>
 
             <div class="col card" id="card2">
                 <h1>
@@ -176,14 +165,14 @@
                         <textarea name="reply2" id="reply2"></textarea>
                     </div>
                     <div>
-                        <input type="submit" class="submit"/>
+                        <input type="submit" class="submit" value="Send"/>
                     </div>
                 </form>
             </div>
 
             <div class="col card" id="card3">
                 <h1>
-                    Write your response here! <!-- this page is for responding.-->
+                    Write your response here!
                 </h1>
                 <p id="req3">the request of other users</p>
                 <form onsubmit="writeResponse(keys[2], reply3); replace(2); return false" method="POST">
@@ -191,7 +180,7 @@
                         <textarea name="reply3" id="reply3"></textarea>
                     </div>
                     <div>
-                        <input type="submit" class="submit"/>
+                        <input type="submit" class="submit" value="Send"/>
                     </div>
                 </form>
 
@@ -199,12 +188,11 @@
         </section>
         
     <div class="container">
-        <button type="button" onclick="dothis()"> <!--on what? I sent one i see itworks now, but we can't possibly require the user to do this-->
-            Click                                 <!--they suggest some stuff to do with promises, async and await. Apparently js will wait for promises if implemented correctly-->
-        </button>                                   <!--committed, btw-->
+        <button type="button" onclick="dothis()">
+            Click
+        </button>
     </div>
-    <!--yeah im reading about it rn we should try that out later but lets make sure first that all the functionality is there It works, I ran it, but only on clicking this button-->
-        <footer class="container-fluid row justify-content-center fixed-bottom"> <!--let's implement all the functions first tho --><!--ok, you mean like yep responding and stuff? ok-->
+        <footer class="container-fluid row justify-content-center fixed-bottom">
             Footer
         </footer>
 

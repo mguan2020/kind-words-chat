@@ -49,9 +49,8 @@
     </head>
 
     <body onload="loadindex()">
-        <p> Click to open the menu.</p>
 
-        <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav">&#9776; Menu</span>
+        <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav" class="menu">&#9776; Menu</span>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#">Ask for Help</a>
@@ -61,7 +60,7 @@
 
         <section class="container-fluid row justify-content-center">
             <h3>
-                This is the Web Version for the Game Kind Words!
+                Help others and help yourself!
             </h3>
         </section>
         <section class="container-fluid row justify-content-center">
@@ -82,7 +81,7 @@
                         <textarea name="request" id="request"></textarea>
                     </div>
                     <div>
-                        <input type="submit" class="submit" />
+                        <input type="submit" class="submit" value="Send" />
                     </div>
                 </form>
             </div>
