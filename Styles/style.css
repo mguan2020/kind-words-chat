@@ -15,6 +15,17 @@ button {
     text-align: center;
     display: inline-block;
     font-size: 16px;
+    transition: 0.4s;
+}
+
+button:hover{
+    background-color: #009905;
+    transition: 0.4s;
+}
+
+#desc{
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 p {
@@ -74,12 +85,18 @@ textarea {
 }
 
 .submit {
-    background-color: #ffc1b6; /* green */
+    background-color: #ffc1b6;
     border:none;
     color: white;
     text-align: center;
     display: inline-block;
     font-size: 16px;
+    transition: 0.4s;
+}
+
+.submit:hover{
+    background-color: #fd8671;
+    transition: 0.4s;
 }
 
 .menu
@@ -121,6 +138,12 @@ textarea {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+
+.websitetitle
+{
+    text-align: center;
+    size:50px;
 }
 
 @media screen and (max-height: 450px) {

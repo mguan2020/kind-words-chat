@@ -49,13 +49,16 @@
     </head>
 
     <body onload="loadindex()">
-
+        <div>
+            <h1 class=websitetitle>
+                <span style="color:#fd8a75">Re</span><span class="color:#ffc1b6">assure</span>
+            </h1>
+        </div>
         <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav" class="menu">&#9776; Menu</span>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#">Ask for Help</a>
             <a href="answerOthers.html">Help others</a>
-            <a href="#">Get Replies</a>
         </div>
 
         <section class="container-fluid row justify-content-center">
@@ -64,7 +67,7 @@
             </h3>
         </section>
         <section class="container-fluid row justify-content-center">
-            <p>
+            <p id="desc">
                 Our goal is to encourage people to voice their thoughts and feelings during the global
                 pandemic in the form of a short letter. Other people can reply to those letters and generate
                 positive vibes.
@@ -84,9 +87,6 @@
                         <input type="submit" class="submit" value="Send" />
                     </div>
                 </form>
-            </div>
-            <div class="replies">
-                <p>sample</p>
             </div>
         </section>
     </body>

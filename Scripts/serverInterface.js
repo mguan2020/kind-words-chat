@@ -94,7 +94,7 @@ function writeNewPost(taele)
 //Retrieve ALL request posts from the database, DOES NOT retrieve response posts
 function getPosts() 
 {
-
+    getPostsDone = false;
     var numberOfRequests = 0; 
     var leadRef = firebase.database().ref('posts');
     leadRef.on("value", function(snapshot) 
