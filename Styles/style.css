@@ -18,6 +18,11 @@ button {
     transition: 0.4s;
     width: 150px;
     height: 50px;
+    
+}
+
+#align-cent{
+    text-align: center;
 }
 
 button:hover{
