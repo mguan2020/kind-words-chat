@@ -79,7 +79,7 @@
 
     <body onload="loadpage()">
     
-        <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav" class="menu">&#9776; Menu</span> <!-- this i think contains the code to reopen it-->
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="opennav" class="menu">&#9776; Menu</span> <!-- this i think contains the code to reopen it-->
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.html">Ask for Help</a>
@@ -93,10 +93,12 @@
             </h3>
         </section>
         <section class="container-fluid row justify-content-center">
-            <p>
+            <p id="desc">
                 Our goal is to encourage people to voice their thoughts and feelings during the global
                 pandemic in the form of a short letter. Other people can reply to those letters and generate
                 positive vibes.
+
+                Press refresh to get the questions
             </p>
         </section>
 
@@ -150,7 +152,7 @@
         
         <div class="container">
             <button type="button" onclick="dothis()">
-                Click
+                Refresh
             </button>
         </div>
     </body>

@@ -16,6 +16,8 @@ button {
     display: inline-block;
     font-size: 16px;
     transition: 0.4s;
+    width: 150px;
+    height: 50px;
 }
 
 button:hover{
