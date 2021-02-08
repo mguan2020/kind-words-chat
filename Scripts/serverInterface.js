@@ -40,12 +40,14 @@ function clearReq()
 //A user's request is stored client-side on his/her computer
 function initReq() 
 {
-    myKey = myStorage.key;
-    myReq = myStorage.str;
+    myKey = myStorage.keyy;
+    myReq = myStorage.msg;
     //TODO: Disply myReq, with HTML
+    if(myReq != null)
+        document.getElementById("request").value = myReq;
     window.setInterval(function(){
-    if (myKey != null && myReq != null)
-    {
+    if (myKey != null && myReq != null) //ahh np im trying to figure out a way to make the page keep refreshing like live updates of responses
+    {//Oh I'm sorry, got confused. What is the need for repeatedly calling getResponses? oh ok. We might need to clear the previous responses then yep we should probably do that
         getResponses(myKey);
     }},1000);
 }
@@ -68,14 +70,17 @@ function writeNewPost(taele)
     var postData = {req: str,};
     // Get a key for a new Post.
     var newPostKey = firebase.database().ref().child('posts').push().key;
-    
+
     // Write the new post's data in the posts list 
     var updates = {};
     updates['/posts/' + newPostKey] = postData;
     firebase.database().ref().update(updates);
-
-    localStorage.setItem('key', newPostKey); //save the key
+    
+    //alert(newPostKey);
+    
+    localStorage.setItem('keyy', newPostKey); //THIS THING is unreadable by the site. works now
     localStorage.setItem('msg', str); //save the message
+    //alert(myStorage.keyy);
 }
 
 //Retrieve ALL request posts from the database, DOES NOT retrieve response posts
@@ -157,6 +162,10 @@ function writeResponse(key, taele)
 function getResponses(key) 
 {
     parentDiv = document.getElementById("replies");
+    while(parentDiv.hasChildNodes()){
+        parentDiv.firstChild.remove();
+    }
+    
     var leadRef = firebase.database().ref('posts/' + key);
     leadRef.on("value", function(snapshot) 
     {
