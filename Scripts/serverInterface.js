@@ -24,6 +24,8 @@ myStorage = window.localStorage; //yes im using localstorage because im lazy
 var myKey;
 var myReq;
 
+var getPostsDone = false;
+
 var reqKeyArr = [];
 var reqStrArr = [];
 
@@ -92,21 +94,28 @@ function writeNewPost(taele)
 //Retrieve ALL request posts from the database, DOES NOT retrieve response posts
 function getPosts() 
 {
+
     var numberOfRequests = 0; 
     var leadRef = firebase.database().ref('posts');
     leadRef.on("value", function(snapshot) 
     {
+        if(!getPostsDone){
+        reqKeyArr = [];
+        reqStrArr = [];
         snapshot.forEach(function(childSnapshot) 
-        {
+        {   
             var childData = childSnapshot.val();
             numberOfRequests++;
             var requestStr = childData.req;                                   // HOLDS "need help" messages
-            var requestKey = Object.keys(snapshot.val())[numberOfRequests-1]; // HOLDS key to the above "need help message"
-            console.log(requestKey);
+			var requestKey = Object.keys(snapshot.val())[numberOfRequests - 1]; // HOLDS key to the above "need help message"
+			            
+            //console.log(requestKey);
             reqKeyArr.push(requestKey); //pushes "need help" key to request Key Array
-            console.log(requestStr);
+            //console.log(requestStr);
             reqStrArr.push(requestStr); //pushes "need help" string to request String Array (parallel Array with reqKeyArr)
         });
+        getPostsDone = true;
+    }
     });
 }
 
@@ -116,6 +125,8 @@ function getAPost()
 {
   var randint = Math.floor(Math.random() * reqKeyArr.length);
   var mykey = reqKeyArr[randint];
+  console.log(mykey);
+  console.log(reqKeyArr);
   var myStr = reqStrArr[randint];
   //console.log(mykey); 
   //console.log(myStr);
@@ -123,7 +134,7 @@ function getAPost()
   //alert(myStr);
   var keey = mykey;
   var value = myStr;
-
+  
   return {keey, value};
 }
 

@@ -45,34 +45,7 @@
             function loadpage(){
                 var cardParent = document.getElementById("requests");
                 initHelp();
-
-
-                //alert("inithelp called");
-                
-                //try setTimeout(500)? and see if that solves it idk does it work? oh ok
-                //I think that function is executed only after this one returns, maybe just use a button to fetch cards for now
-                //no wait, it's not waiting at all
-
-                
-                //make this into a function, and have a button that calls it 
-                // for(var i = 0; i < 3; i++){
-                    
-                //     var userReq = document.getElementById("req" + (i + 1));
-                //     var req = getAPost();
-                //     alert(req);//shows 3 'undefined's
-                //     userReq.innerHTML = req;
-                // }  
-                    
-
-                //while(!done);
-
-                // for(var i = 0; i < 3; i++){
-                    
-                //     var userReq = document.getElementById("req" + (i + 1));
-                //     var req = getAPost();
-                //     alert(req);//shows 3 'undefined's
-                //     userReq.innerHTML = req;
-                // }
+                console.log("loaded page");
             }
             
             function replace(i){
@@ -81,18 +54,8 @@
                     //alert(req[0]);
                     //alert(req[1]);
                     
-                    console.log(req.keey);
+                    //console.log(req.keey);
                     userReq.innerHTML = req.value;
-                    //var keytemp = keys;
-                    //keys.length = 0;
-                    // for(var j = 0; j < 3; j++){
-                    //     if(j != i){
-                    //         keys.push(keytemp[j]);
-                    //     }
-                    //     else{
-                    //         keys.push(req.key);
-                    //     }
-                    // }
                     keys[i] = req.keey;
             }
 
@@ -104,7 +67,7 @@
                     //alert(req[0]);
                     //alert(req[1]);
                     //maybe returning an array is a bad idea?
-                    console.log(req.keey);
+                    //console.log(req.keey);
                     userReq.innerHTML = req.value;
                     keys.push(req.keey);
                 }  
@@ -116,7 +79,7 @@
 
     <body onload="loadpage()">
     
-        <span style="font-size:20px;cursor:pointer" onclick="openNav()" id="opennav" class="container menu">&#9776; Menu</span> <!-- this i think contains the code to reopen it-->
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="opennav" class="menu">&#9776; Menu</span> <!-- this i think contains the code to reopen it-->
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.html">Ask for Help</a>
